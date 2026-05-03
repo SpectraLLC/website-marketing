@@ -1,4 +1,6 @@
 module.exports = {
+  // Tailwind scans these files to decide which utility classes to include in main.css.
+  // Add new template folders here if you create them.
   content: [
     "./_layouts/**/*.html",
     "./_includes/**/*.html",
@@ -7,6 +9,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Project color palette. Change these values to restyle the site globally.
       colors: {
         mist: {
           50: "#f7f9f9",
@@ -22,10 +25,12 @@ module.exports = {
           950: "#252a31"
         }
       },
+      // Fonts are loaded in assets/css/input.css, then named here for Tailwind classes.
       fontFamily: {
         display: ["Mona Sans", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
       },
+      // Custom elevation tokens can be referenced from templates if needed.
       boxShadow: {
         hero: "0 30px 80px rgba(37, 42, 49, 0.12)"
       }

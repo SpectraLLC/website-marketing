@@ -1,7 +1,20 @@
 ---
 layout: default
 ---
+{% comment %}
+Landing page assembly.
+Pages such as index.md and campaigns/example.md stay front-matter-only.
+This layout decides which reusable sections appear and in what order.
+
+To add a new section:
+1. Create an include in _includes/.
+2. Add any editable content to _data/.
+3. Insert the include below where it should appear.
+{% endcomment %}
 {% include header.html %}
+{% comment %}
+The header is fixed, so this spacer keeps the hero from sitting underneath it.
+{% endcomment %}
 <div aria-hidden="true" class="h-[5.25rem]"></div>
 {% include hero.html %}
 {% include service-area.html %}
@@ -9,6 +22,9 @@ layout: default
 {% include included.html %}
 {% include reasons.html %}
 {% include process.html %}
+{% comment %}
+Campaign pages can hide testimonials with show_testimonials: false in front matter.
+{% endcomment %}
 {% if page.show_testimonials != false %}
   {% include testimonials.html %}
 {% endif %}

@@ -1,8 +1,17 @@
 {% assign company = site.data.company %}
 {% assign primary_cta = page.primary_cta | default: company.primary_cta %}
 {% assign secondary_cta = page.secondary_cta | default: company.secondary_cta %}
+{% comment %}
+Top hero section.
+Default copy comes from _data/company.yml.
+Campaign pages can override hero_heading, hero_subheading, primary_cta, and secondary_cta.
+{% endcomment %}
 <section id="top" class="flex flex-col gap-16 px-2 pb-16">
   <div class="relative overflow-hidden rounded-lg panel-gradient">
+    {% comment %}
+    The embedded SVG creates the subtle texture over the hero background.
+    It is decorative only and does not need content updates.
+    {% endcomment %}
     <div class="absolute inset-0 opacity-30 mix-blend-overlay" style="background-image: url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22250%22%20height%3D%22250%22%20viewBox%3D%220%200%20100%20100%22%3E%20%3Cfilter%20id%3D%22n%22%3E%20%3CfeTurbulence%20type%3D%22turbulence%22%20baseFrequency%3D%221.4%22%20numOctaves%3D%221%22%20seed%3D%222%22%20stitchTiles%3D%22stitch%22%20result%3D%22n%22/%3E%20%3CfeComponentTransfer%20result%3D%22g%22%3E%20%3CfeFuncR%20type%3D%22linear%22%20slope%3D%224%22%20intercept%3D%221%22/%3E%20%3CfeFuncG%20type%3D%22linear%22%20slope%3D%224%22%20intercept%3D%221%22/%3E%20%3CfeFuncB%20type%3D%22linear%22%20slope%3D%224%22%20intercept%3D%221%22/%3E%20%3C/feComponentTransfer%3E%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%20in%3D%22g%22/%3E%20%3C/filter%3E%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%20%3C/svg%3E&quot;); background-position: center;"></div>
     <div class="relative -mx-2 sm:px-6 md:px-12 lg:px-0">
       <div class="page-wrap flex flex-col gap-16 lg:pr-[34rem] xl:pr-[38rem]">
@@ -14,11 +23,13 @@
             <h1 class="max-w-5xl font-display text-5xl/12 font-medium tracking-tight text-white sm:text-[3.5rem]/14">{{ page.hero_heading | default: company.hero_heading }}</h1>
             <p class="max-w-2xl text-lg/8 text-white/70">{{ page.hero_subheading | default: company.hero_subheading }}</p>
             <nav aria-label="Primary call to action" class="flex flex-col gap-4 sm:flex-row sm:items-center">
+              {% comment %}CTA href values usually point to section IDs such as #contact or #included.{% endcomment %}
               <a href="{{ primary_cta.href }}" class="inline-flex items-center justify-center gap-1 rounded-full bg-white px-3 py-1 text-sm/7 font-medium text-mist-950 hover:bg-mist-100">{{ primary_cta.label }}</a>
               <a href="{{ secondary_cta.href }}" class="inline-flex items-center justify-center gap-1 rounded-full bg-white/10 px-3 py-1 text-sm/7 font-medium text-white ring-1 ring-white/15 backdrop-blur-sm hover:bg-white/15">{{ secondary_cta.label }}</a>
             </nav>
             <dl class="grid w-full grid-cols-1 gap-2 sm:grid-cols-3">
             {% for item in company.hero_stats %}
+              {% comment %}Add, remove, or reorder hero stat cards in _data/company.yml.{% endcomment %}
               <div class="rounded-lg bg-white/10 p-5 ring-1 ring-white/10 backdrop-blur-sm">
                 <dt class="text-sm/6 font-medium text-white/65">{{ item.label }}</dt>
                 <dd class="mt-2 text-xl/8 font-medium tracking-tight text-white">{{ item.value }}</dd>

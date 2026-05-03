@@ -1,8 +1,20 @@
+# Jekyll reads this file first. These settings affect the whole site.
+# After changing this file, rebuild the site so generated pages use the new settings.
 title: Spectra Marketing
 description: Spectra marketing site
+
+# GitHub Pages supports the default kramdown Markdown engine.
 markdown: kramdown
+
+# "pretty" URLs generate folders like /campaigns/example/index.html instead of .html URLs.
 permalink: pretty
+
+# This is the canonical production domain used by absolute_url, robots.txt, and sitemap.xml.
+# Replace the placeholder before launch, and keep it in sync with _data/company.yml domain.
 url: "https://example-spectra-home.com"
+
+# Files listed here stay in the repository for maintenance but are not copied into the built site.
+# Do not remove _site, node_modules, or cache exclusions; they are local build artifacts.
 exclude:
   - README.md
   - package.json

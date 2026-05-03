@@ -1,6 +1,11 @@
 {% assign company = site.data.company %}
 {% assign footer_variant = page.footer_variant | default: "panel" %}
 {% assign fragment_prefix = "" %}
+{% comment %}
+Shared footer.
+On landing pages, links like #services stay on the current page.
+On simple pages such as 404.html, fragment_prefix turns them into /#services so they jump back to the homepage.
+{% endcomment %}
 {% unless page.layout == "landing" %}
   {% assign fragment_prefix = "/" | relative_url %}
 {% endunless %}
@@ -23,6 +28,7 @@
         <h3 class="text-sm/6 font-medium text-mist-950">Services</h3>
         <ul class="mt-4 flex flex-col gap-3 text-sm/6 text-mist-700">
           {% for service in site.data.services %}
+            {% comment %}Service titles come from _data/services.yml.{% endcomment %}
             <li><a href="{{ fragment_prefix }}#services" class="hover:text-mist-950">{{ service.title }}</a></li>
           {% endfor %}
         </ul>
@@ -31,6 +37,7 @@
         <h3 class="text-sm/6 font-medium text-mist-950">Company</h3>
         <ul class="mt-4 flex flex-col gap-3 text-sm/6 text-mist-700">
           {% for item in company.nav_items %}
+            {% comment %}Company navigation links come from _data/company.yml nav_items.{% endcomment %}
             <li><a href="{{ fragment_prefix }}{{ item.href }}" class="hover:text-mist-950">{{ item.label }}</a></li>
           {% endfor %}
           <li><a href="{{ fragment_prefix }}#contact" class="hover:text-mist-950">Contact</a></li>

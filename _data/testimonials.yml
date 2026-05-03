@@ -1,3 +1,5 @@
+# Testimonials are optional on campaign pages.
+# Set show_testimonials: false in a page's front matter to hide this whole section.
 - name: "Placeholder: Megan R."
   quote: "As first-time buyers, we needed someone who would explain what mattered without making everything sound catastrophic. The report felt clear, detailed, and practical."
 - name: "Placeholder: James T."

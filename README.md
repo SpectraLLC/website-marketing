@@ -2,6 +2,20 @@
 
 Static Jekyll marketing site for GitHub Pages deployment, with Tailwind CSS for compiled styling and Alpine.js for lightweight interaction.
 
+## Source file guide
+
+Start with `_data/company.yml` for most business copy: name, phone, email, hero text, stats, included items, reasons, contact text, CTAs, and the disclaimer.
+
+Use the smaller `_data/*.yml` files for repeated content:
+- `_data/services.yml` controls service cards and footer service links.
+- `_data/faq.yml` controls FAQ accordion rows.
+- `_data/process.yml` controls process steps.
+- `_data/testimonials.yml` controls testimonial cards.
+
+Page files such as `index.md` and `campaigns/example.md` should stay front-matter-only. Their `layout: landing` setting tells Jekyll to assemble the page from `_layouts/landing.html` and the reusable `_includes/*.html` sections.
+
+Template files contain Liquid comments that explain how the site works. Liquid comments are visible in source code but removed from generated HTML, so they help maintainers without publishing implementation notes.
+
 ## Local setup
 
 Requirements:

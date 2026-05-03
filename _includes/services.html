@@ -1,3 +1,8 @@
+{% comment %}
+Services section.
+Service cards are generated from _data/services.yml.
+The static heading/intro below can be moved into _data later if more editors need access.
+{% endcomment %}
 <section id="services" aria-labelledby="services-heading" class="page-section">
   <div class="page-wrap flex flex-col gap-10 lg:gap-16">
     <header class="flex max-w-2xl flex-col gap-6">
@@ -7,6 +12,7 @@
     </header>
     <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
     {% for service in site.data.services %}
+      {% comment %}Each service object needs title and description.{% endcomment %}
       <article class="card-panel">
         <div class="overflow-hidden rounded-sm panel-gradient-soft p-8">
           <div class="rounded-sm bg-white/80 p-6 ring-1 ring-black/5 backdrop-blur-sm">

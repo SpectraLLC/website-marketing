@@ -1,3 +1,7 @@
+{% comment %}
+Process section.
+Steps are edited in _data/process.yml. The Step number is generated automatically.
+{% endcomment %}
 <section id="process" aria-labelledby="process-heading" class="page-section">
   <div class="page-wrap flex flex-col gap-10 lg:gap-16">
     <header class="flex max-w-2xl flex-col gap-6">
@@ -6,6 +10,7 @@
     </header>
     <ol class="grid grid-cols-1 gap-2 lg:grid-cols-4">
     {% for step in site.data.process %}
+      {% comment %}Reorder the YAML list to change the order shown here.{% endcomment %}
       <li class="card-soft">
         <span class="text-sm/6 font-medium text-mist-500">Step {{ forloop.index }}</span>
         <h3 class="mt-4 text-xl/8 font-medium text-mist-950">{{ step.title }}</h3>

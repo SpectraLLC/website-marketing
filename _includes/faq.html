@@ -1,3 +1,8 @@
+{% comment %}
+FAQ accordion.
+Questions and answers are edited in _data/faq.yml.
+Alpine's openIndex value tracks which row is currently expanded.
+{% endcomment %}
 <section id="faq" aria-labelledby="faq-heading" class="page-section">
   <div class="page-wrap grid grid-cols-1 gap-x-2 gap-y-8 lg:grid-cols-2">
     <header class="flex max-w-2xl flex-col gap-6">
@@ -6,6 +11,9 @@
     </header>
     <div x-data="{ openIndex: 0 }" class="divide-y divide-mist-950/10 border-y border-mist-950/10">
     {% for item in site.data.faq %}
+      {% comment %}
+      forloop.index0 is a zero-based number used to match each button to its answer panel.
+      {% endcomment %}
       <article class="py-4">
         <h3>
           <button type="button" class="flex w-full items-start justify-between gap-6 text-left text-base/7 font-medium text-mist-950" @click="openIndex = openIndex === {{ forloop.index0 }} ? -1 : {{ forloop.index0 }}" :aria-expanded="openIndex === {{ forloop.index0 }}">

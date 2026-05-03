@@ -1,9 +1,18 @@
+/*
+  Tailwind source stylesheet.
+  Edit this file for global styles and reusable component classes.
+  Do not edit assets/css/main.css by hand; it is generated from this file.
+*/
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=mona-sans@400,500,600,700&display=swap");
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
 @layer base {
+  /*
+    Base styles apply to normal HTML elements.
+    scroll-padding-top keeps anchored links from hiding under the fixed header.
+  */
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.25rem;
@@ -27,6 +36,10 @@
 }
 
 @layer components {
+  /*
+    Component classes are reusable shortcuts used throughout the Jekyll includes.
+    Keeping them here avoids repeating long Tailwind class lists everywhere.
+  */
   .page-shell {
     @apply overflow-x-hidden;
   }
@@ -35,6 +48,7 @@
     @apply py-16;
   }
 
+  /* Shared responsive page width. Most sections wrap their content in this class. */
   .page-wrap {
     @apply mx-auto w-full max-w-2xl px-6 md:max-w-3xl lg:max-w-7xl lg:px-10;
   }
@@ -66,6 +80,7 @@
     @apply inline-flex items-center justify-center gap-1 rounded-full px-3 py-1 text-sm/7 font-medium text-mist-950 hover:bg-mist-950/10;
   }
 
+  /* Card helpers keep section styling consistent while content stays in YAML. */
   .card-soft {
     @apply rounded-lg bg-mist-950/5 p-6;
   }
@@ -78,6 +93,7 @@
     @apply rounded-lg bg-mist-950/5 p-2;
   }
 
+  /* Project-specific gradient surfaces used by hero, overview, and contact sections. */
   .panel-gradient {
     background-image: linear-gradient(to bottom, #637c86, #778599);
   }

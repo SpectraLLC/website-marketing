@@ -2,6 +2,11 @@
 layout: null
 permalink: /robots.txt
 ---
+{% comment %}
+Search engines read this file first.
+Allow: / means crawlers may index the whole public site.
+The sitemap URL is generated from _config.yml url.
+{% endcomment %}
 User-agent: *
 Allow: /
 Sitemap: {{ '/sitemap.xml' | absolute_url }}

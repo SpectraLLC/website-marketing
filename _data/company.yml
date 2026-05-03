@@ -1,13 +1,24 @@
+# Main editable business and homepage content.
+# Most homepage text comes from this file, so non-developers can update copy without editing HTML.
+# Keep placeholder labels until the real business details are verified.
 name: "Spectra Home Inspection"
 tagline: "Placeholder: calm, detailed home inspections for buyers and homeowners"
+
+# phone_display is what visitors see. phone_href is what the browser dials when clicked.
+# Keep phone_href in tel:+countrycode format with no spaces or punctuation.
 phone_display: "(804) 804-4363"
 phone_href: "tel:+18045550147"
 email: "hello@spectra.llc"
+
+# Keep this domain aligned with _config.yml url when the real domain is chosen.
 domain: "spectra.llc"
 service_area: "Placeholder: greater Richmond, Virginia area"
 license: "VA-HI-000000"
 license_display_text: "Placeholder: licensed and insured in Virginia"
 hours: "Placeholder: Monday-Friday, 9:00 AM-5:00 PM"
+
+# Hero content controls the first large panel on the homepage and campaign pages.
+# Campaign pages may override hero_heading and hero_subheading in their own front matter.
 hero_badge: "Serving the greater Richmond area"
 hero_heading: "Know the home clearly before it becomes your responsibility."
 hero_subheading: "Placeholder: Spectra gives buyers and homeowners a calm, detailed view of the property so they can move forward with confidence, plan repairs wisely, and avoid expensive surprises later."
@@ -15,6 +26,8 @@ hero_image_alt: "Front exterior of a well-kept home"
 hero_image_src: "https://images.unsplash.com/photo-1766705014355-4870e7af2034?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 hero_image_badge_title: "Clear, independent inspections"
 hero_image_badge_text: "Placeholder: straightforward findings and practical next steps."
+
+# The three small cards inside the hero.
 hero_stats:
   - label: "Detailed reporting"
     value: "Placeholder: 24hr turnaround"
@@ -22,6 +35,9 @@ hero_stats:
     value: "Placeholder: buyer + homeowner"
   - label: "Service area"
     value: "Greater Richmond Area"
+
+# Header navigation uses section IDs from the landing page includes.
+# If you add, remove, or rename a section ID, update these links.
 nav_items:
   - label: "Services"
     href: "#services"
@@ -31,6 +47,8 @@ nav_items:
     href: "#process"
   - label: "FAQ"
     href: "#faq"
+
+# "overview" feeds the large service-area panel below the hero.
 overview:
   eyebrow: "Thorough by design"
   heading: "A professional inspection should reduce uncertainty, not add to it."
@@ -45,6 +63,9 @@ overview:
       value: "Placeholder: detailed digital reports"
     - label: "Credentials"
       value: "Placeholder: licensed and insured in Virginia"
+
+# "included" feeds the What's Included section.
+# Add or remove list items here; the template loops through them automatically.
 included:
   eyebrow: "What's Included"
   heading: "Everything is organized to help you understand the home, not overwhelm you."
@@ -62,6 +83,9 @@ included:
       description: "Placeholder: reports distinguish concerns, monitoring items, and maintenance recommendations."
     - title: "Time to ask questions"
       description: "Placeholder: clients should leave the process understanding the property better than when they started."
+
+# "reasons" feeds the Why Choose Spectra section.
+# items are the left-column bullets. cards are the right-column feature cards.
 reasons:
   eyebrow: "Why choose Spectra"
   heading: "Careful attention, clear communication, and an unbiased process."
@@ -80,12 +104,18 @@ reasons:
       description: "Placeholder: clear summaries, photos, and consistent documentation make the report easy to use."
     - title: "Richmond-area service"
       description: "Placeholder: focused coverage for homes throughout the greater Richmond area and nearby communities."
+
+# Contact text appears next to the contact form.
+# The form currently posts nowhere; connect it to a form handler before using it for real leads.
 contact:
   eyebrow: "Schedule an inspection"
   heading: "Ready for a clearer picture of the home?"
   body: "Placeholder: reach out to schedule an inspection or ask a question about timing, scope, or the right service for your property."
   form_note: "Placeholder: form UI only. Connect it to your preferred form handler when ready."
   submit_label: "Schedule Your Inspection"
+
+# CTA objects always need both label and href.
+# Page front matter can override these for campaign-specific messaging.
 primary_cta:
   label: "Schedule Your Inspection"
   href: "#contact"
@@ -96,4 +126,6 @@ trust_items:
   - "Placeholder: same-day digital reporting"
   - "Placeholder: buyer and homeowner inspections"
   - "Placeholder: locally focused Richmond-area service"
+
+# Keep this visible until all sample content has been replaced.
 disclaimer: "Placeholder: all business details on this site are sample content and should be replaced with verified company information before launch."

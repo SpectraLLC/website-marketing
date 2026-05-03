@@ -1,14 +1,23 @@
+# macOS creates these locally. They should never be committed.
 .DS_Store
+
+# Local JavaScript dependencies. Recreate with npm install --no-package-lock.
 node_modules/
+
+# Jekyll build output and cache folders. The site should be built outside the repo for validation.
 _site/
 .jekyll-cache/
 .sass-cache/
+
+# Ruby dependency folders that may appear if someone uses Bundler locally.
 .bundle/
 vendor/bundle/
 vendor/cache/
 vendor/gems/
 vendor/ruby/
 .jekyll-metadata
+
+# Package-manager debug logs.
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

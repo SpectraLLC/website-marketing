@@ -2,9 +2,15 @@
 layout: null
 permalink: /sitemap.xml
 ---
+{% comment %}
+XML sitemap for search engines.
+Jekyll loops through generated pages and outputs their canonical URLs.
+Set sitemap: false in a page's front matter to hide that page from this file.
+{% endcomment %}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for item in site.html_pages %}
+  {% comment %}Skip the 404 page and any HTML page with sitemap: false.{% endcomment %}
   {% unless item.name == '404.html' or item.sitemap == false %}
   <url>
     <loc>{{ item.canonical_url | default: item.url | absolute_url }}</loc>
@@ -12,6 +18,10 @@ permalink: /sitemap.xml
   {% endunless %}
 {% endfor %}
 {% for item in site.pages %}
+  {% comment %}
+  Markdown pages are checked separately so campaign pages such as campaigns/example.md appear.
+  robots.txt, sitemap.xml, and 404.html should not appear as normal sitemap entries.
+  {% endcomment %}
   {% unless item.path == 'robots.txt' or item.path == 'sitemap.xml' or item.name == '404.html' or item.sitemap == false or item.extname != '.md' %}
   <url>
     <loc>{{ item.canonical_url | default: item.url | absolute_url }}</loc>

@@ -1,4 +1,9 @@
 {% assign company = site.data.company %}
+{% comment %}
+Overview/service-area section.
+Despite the file name, this is the large credibility panel after the hero.
+Edit its heading, body, note, and stats in _data/company.yml under overview.
+{% endcomment %}
 <section id="service-area" aria-labelledby="service-area-heading" class="page-section">
   <div class="page-wrap">
     <div class="grid gap-8 overflow-hidden rounded-lg panel-gradient px-8 py-10 text-white lg:grid-cols-[1.3fr_0.9fr] lg:px-12 lg:py-14">
@@ -10,6 +15,7 @@
       </div>
       <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
         {% for item in company.overview.stats %}
+          {% comment %}Overview stat cards are generated from company.overview.stats.{% endcomment %}
           <div class="rounded-lg bg-white/10 p-6 ring-1 ring-white/10 backdrop-blur-sm">
             <dt class="text-sm/6 font-medium text-white/70">{{ item.label }}</dt>
             <dd class="mt-2 text-2xl/8 font-medium tracking-tight text-white">{{ item.value }}</dd>

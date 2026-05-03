@@ -1,3 +1,5 @@
+# These steps feed the "Simple process" section in _includes/process.html.
+# The displayed step number is automatic, based on the order in this list.
 - title: "Schedule"
   description: "Placeholder: share the property address, preferred timing, and inspection type to get the appointment started."
 - title: "Inspect"

@@ -1,5 +1,10 @@
 {% assign company = site.data.company %}
 {% assign primary_cta = page.primary_cta | default: company.primary_cta %}
+{% comment %}
+Contact section.
+The left panel uses _data/company.yml values.
+The form is currently static UI only because action="#"; connect it to a form service before launch.
+{% endcomment %}
 <section id="contact" aria-labelledby="contact-section-heading">
   <div class="page-wrap grid gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:py-20">
     <div class="overflow-hidden rounded-lg panel-gradient px-8 py-10 text-white lg:px-10 lg:py-12">
@@ -14,6 +19,10 @@
       </div>
     </div>
     <form action="#" method="post" class="rounded-lg bg-white p-8 ring-1 ring-black/5">
+      {% comment %}
+      Keep label for="..." and input id="..." values matched.
+      That pairing helps screen readers and makes the form easier to click.
+      {% endcomment %}
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
           <label for="name" class="block text-sm/6 font-medium text-mist-950">Name</label>

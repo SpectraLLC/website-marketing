@@ -1,5 +1,13 @@
 {% assign company = site.data.company %}
 {% assign primary_cta = page.primary_cta | default: company.primary_cta %}
+{% comment %}
+Fixed site header.
+company.nav_items comes from _data/company.yml.
+page.primary_cta can override the default CTA on campaign pages.
+
+The x-data, x-show, and @click attributes are Alpine.js.
+They power the mobile menu without adding a larger JavaScript framework.
+{% endcomment %}
 <header class="fixed inset-x-0 top-0 z-30 bg-mist-100/95 shadow-[0_1px_0_rgba(255,255,255,0.65),0_16px_42px_rgba(37,42,49,0.12)] backdrop-blur">
   <nav x-data="{ mobileOpen: false }" aria-label="Landing page navigation" class="page-wrap grid h-[5.25rem] grid-cols-[auto_1fr_auto] items-center gap-6">
     <a href="#top" class="inline-flex items-center gap-3 justify-self-start">
@@ -13,6 +21,7 @@
     </a>
     <div class="hidden items-center justify-center gap-8 lg:flex">
       {% for item in company.nav_items %}
+        {% comment %}Each nav item should point to a real section ID, such as #services.{% endcomment %}
         <a href="{{ item.href }}" class="inline-flex items-center gap-2 text-sm/7 font-medium text-mist-950">{{ item.label }}</a>
       {% endfor %}
     </div>
@@ -25,6 +34,9 @@
       </svg>
     </button>
     <div id="mobile-nav" x-show="mobileOpen" x-transition.opacity class="fixed inset-0 z-50 min-h-screen w-full overflow-y-auto bg-mist-100 px-6 py-6 lg:hidden" style="background-color: #eff2f2;">
+      {% comment %}
+      This panel is intentionally fixed and opaque so menu text never overlaps the page behind it.
+      {% endcomment %}
       <div class="flex justify-end">
         <button type="button" class="inline-flex rounded-full p-1.5 text-mist-950 hover:bg-mist-950/10" @click="mobileOpen = false" aria-label="Close menu">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
