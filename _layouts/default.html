@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" class="bg-mist-100 antialiased">
+  <head>
+    {% assign canonical_path = page.canonical_url | default: page.url %}
+    {% assign canonical_url = canonical_path | absolute_url %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="{{ page.title | default: site.title }}" />
+    <meta property="og:description" content="{{ page.description | default: site.description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}" />
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/favicons/favicon.ico' | relative_url }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicons/favicon-32x32.png' | relative_url }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicons/favicon-16x16.png' | relative_url }}" />
+    <link rel="apple-touch-icon" href="{{ '/assets/favicons/apple-touch-icon.png' | relative_url }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ '/assets/favicons/apple-touch-icon-precomposed.png' | relative_url }}" />
+    <link rel="manifest" href="{{ '/assets/favicons/site.webmanifest' | relative_url }}" />
+    <meta name="theme-color" content="#eff2f2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="{{ page.title | default: site.title }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body class="min-h-screen font-sans text-mist-950">
+    <main>
+      <div class="page-shell">
+        {{ content }}
+      </div>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>

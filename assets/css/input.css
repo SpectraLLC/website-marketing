@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=mona-sans@400,500,600,700&display=swap");
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.25rem;
+  }
+
+  body {
+    @apply bg-mist-100 font-sans text-mist-700 antialiased;
+    background-image:
+      radial-gradient(circle at top, rgba(99, 124, 134, 0.16), transparent 30%),
+      linear-gradient(180deg, #f8f9f9 0%, #eff3f3 22%, #e5ebec 62%, #d7e0e3 100%);
+    background-attachment: fixed;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-mist-950 text-white;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply overflow-x-hidden;
+  }
+
+  .page-section {
+    @apply py-16;
+  }
+
+  .page-wrap {
+    @apply mx-auto w-full max-w-2xl px-6 md:max-w-3xl lg:max-w-7xl lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-sm/6 font-medium text-mist-500;
+  }
+
+  .section-title {
+    @apply font-display text-3xl/9 font-medium tracking-tight text-mist-950;
+  }
+
+  @media (min-width: 640px) {
+    .section-title {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  .lede-copy {
+    @apply text-base/7 text-mist-700;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center gap-1 rounded-full bg-mist-950 px-3 py-1 text-sm/7 font-medium text-white hover:bg-mist-800;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center gap-1 rounded-full px-3 py-1 text-sm/7 font-medium text-mist-950 hover:bg-mist-950/10;
+  }
+
+  .card-soft {
+    @apply rounded-lg bg-mist-950/5 p-6;
+  }
+
+  .card-white {
+    @apply rounded-lg bg-white p-6 ring-1 ring-black/5;
+  }
+
+  .card-panel {
+    @apply rounded-lg bg-mist-950/5 p-2;
+  }
+
+  .panel-gradient {
+    background-image: linear-gradient(to bottom, #637c86, #778599);
+  }
+
+  .panel-gradient-soft {
+    background-image: linear-gradient(to bottom, rgba(99, 124, 134, 0.12), rgba(119, 133, 153, 0.18));
+  }
+}

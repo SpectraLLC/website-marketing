@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% include header.html %}
+<div aria-hidden="true" class="h-[5.25rem]"></div>
+{% include hero.html %}
+{% include service-area.html %}
+{% include services.html %}
+{% include included.html %}
+{% include reasons.html %}
+{% include process.html %}
+{% if page.show_testimonials != false %}
+  {% include testimonials.html %}
+{% endif %}
+{% include faq.html %}
+{% include contact.html %}

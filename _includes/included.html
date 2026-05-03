@@ -1,0 +1,18 @@
+{% assign included = site.data.company.included %}
+<section id="included" aria-labelledby="included-heading" class="page-section">
+  <div class="page-wrap flex flex-col gap-10 lg:gap-16">
+    <header class="flex max-w-2xl flex-col gap-6">
+      <p class="eyebrow">{{ included.eyebrow }}</p>
+      <h2 id="included-heading" class="section-title">{{ included.heading }}</h2>
+      <p class="lede-copy">{{ included.intro }}</p>
+    </header>
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-3">
+    {% for item in included.items %}
+      <article class="card-soft">
+        <h3 class="text-lg/7 font-medium text-mist-950">{{ item.title }}</h3>
+        <p class="mt-4 text-base/7 text-mist-700">{{ item.description }}</p>
+      </article>
+    {% endfor %}
+    </div>
+  </div>
+</section>

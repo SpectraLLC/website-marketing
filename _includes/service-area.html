@@ -1,0 +1,21 @@
+{% assign company = site.data.company %}
+<section id="service-area" aria-labelledby="service-area-heading" class="page-section">
+  <div class="page-wrap">
+    <div class="grid gap-8 overflow-hidden rounded-lg panel-gradient px-8 py-10 text-white lg:grid-cols-[1.3fr_0.9fr] lg:px-12 lg:py-14">
+      <div>
+        <p class="text-sm/6 font-medium text-white/65">{{ company.overview.eyebrow }}</p>
+        <h2 id="service-area-heading" class="mt-4 max-w-4xl font-display text-4xl/10 font-medium tracking-tight sm:text-[2.75rem]/12">{{ company.overview.heading }}</h2>
+        <p class="mt-6 max-w-3xl text-base/7 text-white/80">{{ company.overview.body }}</p>
+        <p class="mt-4 max-w-3xl text-sm/6 text-white/60">{{ company.overview.note }}</p>
+      </div>
+      <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+        {% for item in company.overview.stats %}
+          <div class="rounded-lg bg-white/10 p-6 ring-1 ring-white/10 backdrop-blur-sm">
+            <dt class="text-sm/6 font-medium text-white/70">{{ item.label }}</dt>
+            <dd class="mt-2 text-2xl/8 font-medium tracking-tight text-white">{{ item.value }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
+</section>

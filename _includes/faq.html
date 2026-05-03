@@ -1,0 +1,23 @@
+<section id="faq" aria-labelledby="faq-heading" class="page-section">
+  <div class="page-wrap grid grid-cols-1 gap-x-2 gap-y-8 lg:grid-cols-2">
+    <header class="flex max-w-2xl flex-col gap-6">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-heading" class="section-title">Frequently asked questions</h2>
+    </header>
+    <div x-data="{ openIndex: 0 }" class="divide-y divide-mist-950/10 border-y border-mist-950/10">
+    {% for item in site.data.faq %}
+      <article class="py-4">
+        <h3>
+          <button type="button" class="flex w-full items-start justify-between gap-6 text-left text-base/7 font-medium text-mist-950" @click="openIndex = openIndex === {{ forloop.index0 }} ? -1 : {{ forloop.index0 }}" :aria-expanded="openIndex === {{ forloop.index0 }}">
+            {{ item.question }}
+            <span class="text-xl leading-none text-mist-500" x-text="openIndex === {{ forloop.index0 }} ? '−' : '+'"></span>
+          </button>
+        </h3>
+        <div x-show="openIndex === {{ forloop.index0 }}" class="-mt-2 pr-12 pb-4 pt-4">
+          <p class="text-sm/7 text-mist-700">{{ item.answer }}</p>
+        </div>
+      </article>
+    {% endfor %}
+    </div>
+  </div>
+</section>

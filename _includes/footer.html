@@ -1,0 +1,41 @@
+{% assign company = site.data.company %}
+{% assign footer_variant = page.footer_variant | default: "panel" %}
+{% assign fragment_prefix = "" %}
+{% unless page.layout == "landing" %}
+  {% assign fragment_prefix = "/" | relative_url %}
+{% endunless %}
+<footer id="site-footer" class="{% if footer_variant == 'full-bleed' %}panel-gradient-soft py-16{% else %}px-2 py-16{% endif %}">
+  <section aria-labelledby="contact-heading" class="page-wrap grid gap-12 {% if footer_variant == 'full-bleed' %}px-6 py-10 lg:px-10 lg:py-12{% else %}overflow-hidden rounded-lg panel-gradient-soft px-8 py-10 ring-1 ring-black/5 lg:px-10 lg:py-12{% endif %} lg:grid-cols-3">
+    <div>
+      <div class="flex items-center gap-3">
+        <span class="flex size-12 items-center justify-center rounded-full bg-white text-lg font-semibold text-mist-950 ring-1 ring-black/5">S</span>
+        <span class="font-display text-2xl/8 tracking-tight text-mist-950">{{ company.name | replace: ' Home Inspection', '' }}</span>
+      </div>
+      <p class="mt-4 max-w-sm text-sm/6 text-mist-700">{{ company.tagline }}</p>
+      <div class="mt-4 flex flex-col gap-1 text-sm/6 text-mist-700">
+        <p><a href="{{ company.phone_href }}" class="hover:text-mist-950">{{ company.phone_display }}</a></p>
+        <p><a href="mailto:{{ company.email }}" class="hover:text-mist-950">{{ company.email }}</a></p>
+        <p>{{ company.license_display_text }}</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-8 lg:col-span-2">
+      <div>
+        <h3 class="text-sm/6 font-medium text-mist-950">Services</h3>
+        <ul class="mt-4 flex flex-col gap-3 text-sm/6 text-mist-700">
+          {% for service in site.data.services %}
+            <li><a href="{{ fragment_prefix }}#services" class="hover:text-mist-950">{{ service.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm/6 font-medium text-mist-950">Company</h3>
+        <ul class="mt-4 flex flex-col gap-3 text-sm/6 text-mist-700">
+          {% for item in company.nav_items %}
+            <li><a href="{{ fragment_prefix }}{{ item.href }}" class="hover:text-mist-950">{{ item.label }}</a></li>
+          {% endfor %}
+          <li><a href="{{ fragment_prefix }}#contact" class="hover:text-mist-950">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</footer>

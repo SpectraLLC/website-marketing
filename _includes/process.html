@@ -1,0 +1,17 @@
+<section id="process" aria-labelledby="process-heading" class="page-section">
+  <div class="page-wrap flex flex-col gap-10 lg:gap-16">
+    <header class="flex max-w-2xl flex-col gap-6">
+      <p class="eyebrow">Simple process</p>
+      <h2 id="process-heading" class="section-title">From scheduling to final report, the process stays straightforward.</h2>
+    </header>
+    <ol class="grid grid-cols-1 gap-2 lg:grid-cols-4">
+    {% for step in site.data.process %}
+      <li class="card-soft">
+        <span class="text-sm/6 font-medium text-mist-500">Step {{ forloop.index }}</span>
+        <h3 class="mt-4 text-xl/8 font-medium text-mist-950">{{ step.title }}</h3>
+        <p class="mt-3 text-base/7 text-mist-700">{{ step.description }}</p>
+      </li>
+    {% endfor %}
+    </ol>
+  </div>
+</section>

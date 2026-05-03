@@ -1,0 +1,11 @@
+{
+  "name": "website-marketing",
+  "private": true,
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/main.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.2.2",
+    "tailwindcss": "4.2.2"
+  }
+}

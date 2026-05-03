@@ -1,0 +1,43 @@
+{% assign company = site.data.company %}
+{% assign primary_cta = page.primary_cta | default: company.primary_cta %}
+<header class="fixed inset-x-0 top-0 z-30 bg-mist-100/95 shadow-[0_1px_0_rgba(255,255,255,0.65),0_16px_42px_rgba(37,42,49,0.12)] backdrop-blur">
+  <nav x-data="{ mobileOpen: false }" aria-label="Landing page navigation" class="page-wrap grid h-[5.25rem] grid-cols-[auto_1fr_auto] items-center gap-6">
+    <a href="#top" class="inline-flex items-center gap-3 justify-self-start">
+      <span class="flex size-[3.75rem] items-center justify-center overflow-hidden rounded-full border-4 border-mist-950/20 bg-white p-px ">
+        <img src="{{ '/assets/images/brand-mark.svg' | relative_url }}" alt="{{ company.name }}" class="h-full w-full scale-110 object-cover" />
+      </span>
+      <span>
+        <span class="block font-display text-xl/6 tracking-tight text-mist-950">{{ company.name | replace: ' Home Inspection', '' }}</span>
+        <span class="block text-xs/5 font-medium text-mist-500">Home Inspection</span>
+      </span>
+    </a>
+    <div class="hidden items-center justify-center gap-8 lg:flex">
+      {% for item in company.nav_items %}
+        <a href="{{ item.href }}" class="inline-flex items-center gap-2 text-sm/7 font-medium text-mist-950">{{ item.label }}</a>
+      {% endfor %}
+    </div>
+    <div class="hidden justify-self-end lg:flex">
+      <a href="{{ primary_cta.href }}" class="button-primary">{{ primary_cta.label }}</a>
+    </div>
+    <button type="button" class="inline-flex justify-self-end rounded-full p-1.5 text-mist-950 hover:bg-mist-950/10 lg:hidden" @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen.toString()" aria-controls="mobile-nav" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="size-6">
+        <path fill-rule="evenodd" d="M3.748 8.248a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75ZM3.748 15.75a.75.75 0 0 1 .75-.751h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <div id="mobile-nav" x-show="mobileOpen" x-transition.opacity class="fixed inset-0 z-50 min-h-screen w-full overflow-y-auto bg-mist-100 px-6 py-6 lg:hidden" style="background-color: #eff2f2;">
+      <div class="flex justify-end">
+        <button type="button" class="inline-flex rounded-full p-1.5 text-mist-950 hover:bg-mist-950/10" @click="mobileOpen = false" aria-label="Close menu">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-4">
+        {% for item in company.nav_items %}
+          <a href="{{ item.href }}" class="text-3xl/10 font-medium text-mist-950" @click="mobileOpen = false">{{ item.label }}</a>
+        {% endfor %}
+        <a href="{{ primary_cta.href }}" class="button-primary mt-2 w-fit px-4 py-2" @click="mobileOpen = false">{{ primary_cta.label }}</a>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,45 @@
+{% assign company = site.data.company %}
+{% assign primary_cta = page.primary_cta | default: company.primary_cta %}
+<section id="contact" aria-labelledby="contact-section-heading">
+  <div class="page-wrap grid gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:py-20">
+    <div class="overflow-hidden rounded-lg panel-gradient px-8 py-10 text-white lg:px-10 lg:py-12">
+      <p class="text-sm/6 font-medium text-white/65">{{ company.contact.eyebrow }}</p>
+      <h2 id="contact-section-heading" class="mt-4 font-display text-4xl/10 font-medium tracking-tight sm:text-[2.75rem]/12">{{ company.contact.heading }}</h2>
+      <p class="mt-6 text-lg/8 text-white/80">{{ company.contact.body }}</p>
+      <div class="mt-8 flex flex-col gap-4 text-base/7 text-white/80">
+        <p><strong class="font-medium text-white">Service area:</strong> {{ company.service_area }}</p>
+        <p><strong class="font-medium text-white">Phone:</strong> {{ company.phone_display }}</p>
+        <p><strong class="font-medium text-white">Email:</strong> {{ company.email }}</p>
+        <p><strong class="font-medium text-white">License:</strong> {{ company.license_display_text }}</p>
+      </div>
+    </div>
+    <form action="#" method="post" class="rounded-lg bg-white p-8 ring-1 ring-black/5">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div>
+          <label for="name" class="block text-sm/6 font-medium text-mist-950">Name</label>
+          <input id="name" type="text" name="name" placeholder="Your full name" class="mt-2 block w-full rounded-lg bg-mist-100 px-4 py-3 text-base text-mist-950 outline-none ring-1 ring-black/5 placeholder:text-mist-500 focus:ring-2 focus:ring-mist-500" />
+        </div>
+        <div>
+          <label for="phone" class="block text-sm/6 font-medium text-mist-950">Phone</label>
+          <input id="phone" type="tel" name="phone" placeholder="(804) 555-0123" class="mt-2 block w-full rounded-lg bg-mist-100 px-4 py-3 text-base text-mist-950 outline-none ring-1 ring-black/5 placeholder:text-mist-500 focus:ring-2 focus:ring-mist-500" />
+        </div>
+        <div class="sm:col-span-2">
+          <label for="email" class="block text-sm/6 font-medium text-mist-950">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" class="mt-2 block w-full rounded-lg bg-mist-100 px-4 py-3 text-base text-mist-950 outline-none ring-1 ring-black/5 placeholder:text-mist-500 focus:ring-2 focus:ring-mist-500" />
+        </div>
+        <div class="sm:col-span-2">
+          <label for="address" class="block text-sm/6 font-medium text-mist-950">Property address</label>
+          <input id="address" type="text" name="address" placeholder="Street address, city, ZIP" class="mt-2 block w-full rounded-lg bg-mist-100 px-4 py-3 text-base text-mist-950 outline-none ring-1 ring-black/5 placeholder:text-mist-500 focus:ring-2 focus:ring-mist-500" />
+        </div>
+        <div class="sm:col-span-2">
+          <label for="message" class="block text-sm/6 font-medium text-mist-950">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us what type of inspection you need and your preferred timeframe." class="mt-2 block w-full rounded-lg bg-mist-100 px-4 py-3 text-base text-mist-950 outline-none ring-1 ring-black/5 placeholder:text-mist-500 focus:ring-2 focus:ring-mist-500"></textarea>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm/6 text-mist-500">{{ company.contact.form_note }}</p>
+        <button type="submit" data-cta-href="{{ primary_cta.href }}" class="button-primary">{{ company.contact.submit_label }}</button>
+      </div>
+    </form>
+  </div>
+</section>

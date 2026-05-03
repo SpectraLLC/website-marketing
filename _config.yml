@@ -1,0 +1,13 @@
+title: Spectra Marketing
+description: Spectra marketing site
+markdown: kramdown
+permalink: pretty
+url: "https://example-spectra-home.com"
+exclude:
+  - README.md
+  - package.json
+  - tailwind.config.js
+  - assets/css/input.css
+  - node_modules
+  - .jekyll-cache
+  - _site

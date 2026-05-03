@@ -1,0 +1,26 @@
+<section id="services" aria-labelledby="services-heading" class="page-section">
+  <div class="page-wrap flex flex-col gap-10 lg:gap-16">
+    <header class="flex max-w-2xl flex-col gap-6">
+      <p class="eyebrow">Services</p>
+      <h2 id="services-heading" class="section-title">Inspection services built for real decisions at home.</h2>
+      <p class="lede-copy">Placeholder: whether preparing to buy, planning maintenance, or checking new construction, the focus stays practical and easy to understand.</p>
+    </header>
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+    {% for service in site.data.services %}
+      <article class="card-panel">
+        <div class="overflow-hidden rounded-sm panel-gradient-soft p-8">
+          <div class="rounded-sm bg-white/80 p-6 ring-1 ring-black/5 backdrop-blur-sm">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex size-11 items-center justify-center rounded-full bg-mist-950/5 text-mist-950 ring-1 ring-mist-950/10">
+                <span class="size-2.5 rounded-full bg-current"></span>
+              </span>
+              <h3 class="text-xl/8 font-medium text-mist-950">{{ service.title }}</h3>
+            </div>
+            <p class="mt-4 text-base/7 text-mist-700">{{ service.description }}</p>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+    </div>
+  </div>
+</section>
