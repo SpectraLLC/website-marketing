@@ -18,38 +18,66 @@ Template files contain Liquid comments that explain how the site works. Liquid c
 
 ## Local setup
 
-Requirements:
-- Ruby with `jekyll` available on `PATH`
-- Node.js and npm
+Local builds are driven by the `Makefile`, which scopes Homebrew Ruby 4.x to this
+project only — it does **not** change your global `PATH` and never needs `sudo`.
+(`which ruby` on the build host is macOS system Ruby 2.6, which modern Jekyll
+cannot use; Homebrew Ruby is installed keg-only.) All Ruby gems install into
+`./vendor/bundle` (gitignored). See the header comments in the `Makefile` for the
+full rationale.
 
-Install the local CSS build dependency when needed:
+Requirements:
+- Homebrew Ruby 4.x at `/opt/homebrew/opt/ruby` (keg-only is fine)
+- Node.js and npm (for the Tailwind CSS build)
+- GNU `make`
+
+One-time: install the Ruby toolchain (Jekyll + the GitHub Pages gem set) into
+`./vendor/bundle`:
+
+```bash
+make install
+```
+
+Preview the site locally with live reload at http://127.0.0.1:4000 (Ctrl-C to stop):
+
+```bash
+make serve
+```
+
+Other targets:
+
+```bash
+make build     # build the site into ./_site
+make css       # rebuild Tailwind CSS -> assets/css/main.css (runs npm run build:css)
+make doctor    # show which ruby/bundler this project resolves to
+make clean     # remove _site and .jekyll-cache
+```
+
+The Tailwind CSS build still uses Node. Install its dependency once when needed:
 
 ```bash
 npm install --no-package-lock
 ```
 
-Run the Tailwind build:
+### How local parity with GitHub Pages works
+
+- `Gemfile` depends on the `github-pages` gem, so the local build uses the same
+  Jekyll engine (3.9.x) GitHub Pages runs. Run `bundle` commands through the
+  Makefile (or `make`) so the correct Ruby/Bundler is used.
+- Because the site targets a Ruby version newer than the GitHub Pages stack, a
+  couple of **local-only** shims make the old engine run on Homebrew Ruby 4:
+  `tools/ruby4-compat.rb` (loaded via `RUBYOPT` from the Makefile) restores a few
+  APIs Ruby removed, and the Makefile forces a UTF-8 locale. GitHub Pages builds
+  the site server-side and ignores the Makefile, `tools/`, and `_plugins/`, so
+  none of these local shims affect the deployed site.
+- `_config.yml` sets `baseurl: ""` and `repository:` so local builds resolve
+  asset paths and repository metadata without a GitHub API token.
+
+Remove local dependency artifacts when done if you do not want them left in the
+worktree:
 
 ```bash
-npm run build:css
-```
-
-Build the Jekyll site:
-
-```bash
-jekyll build
-```
-
-Serve locally during iteration:
-
-```bash
-jekyll serve
-```
-
-Remove local dependency artifacts when done if you do not want them left in the worktree:
-
-```bash
-rm -rf node_modules .jekyll-cache _site
+make clean
+rm -rf node_modules vendor
 ```
 
 ## GitHub Pages configuration
