@@ -13,8 +13,25 @@ permalink: pretty
 # Replace the placeholder before launch, and keep it in sync with _data/company.yml domain.
 url: "https://example-spectra-home.com"
 
+# The site is served from the domain root (an apex custom domain), so paths built
+# by relative_url/absolute_url must NOT be prefixed. Set this explicitly: without
+# it, the bundled jekyll-github-metadata plugin guesses a project-page baseurl
+# (e.g. /pages/SpectraLLC/website-marketing) for local builds, which breaks the
+# local preview's asset links. If this ever ships as a github.io PROJECT page
+# instead, change this to "/website-marketing".
+baseurl: ""
+
+# GitHub repository name-with-owner. GitHub Pages auto-detects this when it builds
+# the site, but the bundled jekyll-github-metadata plugin needs it set explicitly
+# for local `bundle exec jekyll build/serve` to succeed without a GitHub API token.
+# Keep this in sync with the `origin` git remote.
+repository: SpectraLLC/website-marketing
+
 # Files listed here stay in the repository for maintenance but are not copied into the built site.
 # Do not remove _site, node_modules, or cache exclusions; they are local build artifacts.
+# NOTE: Setting `exclude` REPLACES Jekyll's built-in defaults, so the Ruby/Bundler
+# artifacts below (vendor, Gemfile*, .bundle) must be listed explicitly — otherwise
+# Jekyll tries to render the gems under vendor/bundle as site content and the build fails.
 exclude:
   - README.md
   - package.json
@@ -23,3 +40,9 @@ exclude:
   - node_modules
   - .jekyll-cache
   - _site
+  - vendor
+  - .bundle
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - tools
